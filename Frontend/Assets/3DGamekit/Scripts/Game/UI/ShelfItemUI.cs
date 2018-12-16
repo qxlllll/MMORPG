@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Gamekit3D;
+using System;
 public class ShelfItemUI : MonoBehaviour
 {
     public string itemName;
@@ -10,6 +12,7 @@ public class ShelfItemUI : MonoBehaviour
     public Button button;
     public Text textName;
     public Text textCost;
+    public short gold_price;
     CartGridUI handler;
 
     private void Awake()
@@ -45,7 +48,17 @@ public class ShelfItemUI : MonoBehaviour
         }
         button.image.sprite = sprite;
         textName.text = name;
-        textCost.text = "$5";
+        Debug.Log(name);
+        foreach (KeyValuePair<string, short> kvp in FMarket.all_gold_price)
+        {
+            if (kvp.Key.Equals(name))
+            {
+                gold_price = kvp.Value;
+                Debug.Log(kvp.Value);
+            }
+        }
+        textCost.text = "$" + Convert.ToString(gold_price);
+        //textCost.text = "4";
     }
 
     public void AddToCart()

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Gamekit3D;
 using Gamekit3D.Network;
+using Common;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -17,22 +18,68 @@ public class InventoryUI : MonoBehaviour
     {
         InventoryCell.SetActive(false);
     }
-
+    public void OnApplyClicked()
+    {
+        CApply apply = new CApply();
+        apply.to_apply = Attribute.apply;
+        Debug.Log("apply.to_apply"+apply.to_apply);
+        Client.Instance.Send(apply);
+    }
+    public void OnRefreshClicked()
+    {
+        GameObject.FindObjectOfType<RoleUI>().InteligenceValue.SetText(Attribute.InteligenceValue, true);
+        GameObject.FindObjectOfType<RoleUI>().SpeedValue.SetText(Attribute.SpeedValue, true);
+        GameObject.FindObjectOfType<RoleUI>().LevelValue.SetText(Attribute.LevelValue, true);
+        GameObject.FindObjectOfType<RoleUI>().AttackValue.SetText(Attribute.AttackValue, true);
+        GameObject.FindObjectOfType<RoleUI>().DefenseValue.SetText(Attribute.DefenseValue, true);
+        OnDisable();
+        OnEnable();
+    }
     private void OnEnable()
     {
         PlayerMyController.Instance.EnabledWindowCount++;
         int capacity = PlayerMyController.Instance.InventoryCapacity;
         int count = PlayerMyController.Instance.Inventory.Count;
-        foreach (var kv in PlayerMyController.Instance.Inventory)
+        
+        //OnRefresh();
+        foreach (var kv in Inventory.player_Inventory)
+        {
+            
+            // TODO ... specify icon by item types
+            int i = 0;
+            int num = kv.Value;
+            for (i=0; i<num; i++)
+            {
+                GameObject cloned = GameObject.Instantiate(InventoryCell);
+                Button button = cloned.GetComponent<Button>();
+                Sprite icon = GetAllIcons.icons[kv.Key];
+                button.onClick.AddListener(delegate ()
+                {
+                    Attribute.apply = kv.Key;
+                    GameObject.Find("ItemImage").GetComponent<Image>().sprite = icon;
+                });
+                button.image.sprite = icon;
+                cloned.SetActive(true);
+                cloned.transform.SetParent(InventoryGridContent.transform, false);
+            }
+            
+            
+        }
+        /*foreach (var kv in PlayerMyController.Instance.Inventory)
         {
             GameObject cloned = GameObject.Instantiate(InventoryCell);
             Button button = cloned.GetComponent<Button>();
             // TODO ... specify icon by item types
             Sprite icon = GetAllIcons.icons["Sword_2"];
             button.image.sprite = icon;
+            button.onClick.AddListener(delegate ()
+            {
+                GameObject.Find("ItemImage").GetComponent<Image>().sprite = icon;
+            });
+            
             cloned.SetActive(true);
             cloned.transform.SetParent(InventoryGridContent.transform, false);
-        }
+        }*/
 
         for (int i = 0; i < capacity - count; i++)
         {
@@ -41,7 +88,7 @@ public class InventoryUI : MonoBehaviour
             cloned.transform.SetParent(InventoryGridContent.transform, false);
         }
     }
-
+    
     private void OnDisable()
     {
         int cellCount = InventoryGridContent.transform.childCount;

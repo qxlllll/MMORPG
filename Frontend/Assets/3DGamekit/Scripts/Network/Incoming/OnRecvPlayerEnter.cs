@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using System;
 
 namespace Gamekit3D.Network
 {
@@ -17,7 +18,15 @@ namespace Gamekit3D.Network
             }
             //Console.WriteLine("Receive Enter...");
             SPlayerEnter msg = message as SPlayerEnter;
-            startup.PlayerEnter(msg.scene);
+            
+            var obj = GameObject.FindObjectOfType<RoleUI>();
+
+            if (msg.exist_or_not==true)
+            {
+                startup.PlayerEnter(msg.scene);
+            }
+           
+
         }
     }
 }

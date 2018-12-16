@@ -1,6 +1,7 @@
 ﻿using Common;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Backend.Game
 {
@@ -9,6 +10,18 @@ namespace Backend.Game
         public IChannel connection;
         public string user;
         public string token;
+
+        public string InteligenceValue;
+        public string SpeedValue;
+        public string LevelValue;
+        public string AttackValue;
+        public string DefenseValue;
+        public Int16 gold_coins;
+        public Dictionary<String, String> all_item_type = new Dictionary<string, string>();
+        public Dictionary<String, Int16> all_item_value = new Dictionary<string, Int16>();
+        public Dictionary<String, Int16> all_gold_price = new Dictionary<string, Int16>();
+        public Dictionary<String, Int16> all_silver_price = new Dictionary<string, Int16>();
+        public Dictionary<String, Int16> Inventory = new Dictionary<string, Int16>();
         private Weapon m_weapon;
 
         public Weapon Weapon { get { return m_weapon; } }

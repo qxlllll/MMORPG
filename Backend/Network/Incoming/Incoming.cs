@@ -16,6 +16,9 @@ namespace Backend.Network
             register.Register(Command.C_LOGIN, OnRecvLogin);
             register.Register(Command.C_REGISTER, OnRecvRegister);
             register.Register(Command.C_PLAYER_ENTER, OnRecvPlayerEnter);
+            register.Register(Command.C_BUY, OnRecvBuy);
+            register.Register(Command.C_APPLY, OnRecvApply);
+            register.Register(Command.C_GET_INVENTORY, OnRecvGetInventory);
             register.Register(Command.C_PLAYER_MOVE, OnRecvPlayerMove);
             register.Register(Command.C_PLAYER_JUMP, OnRecvPlayerJump);
             register.Register(Command.C_PLAYER_ATTACK, OnRecvPlayerAttack);

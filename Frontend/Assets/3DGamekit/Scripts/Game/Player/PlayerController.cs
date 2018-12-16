@@ -22,6 +22,8 @@ namespace Gamekit3D
         public bool respawning { get { return m_Respawning; } }
         public bool IsMine { get { return m_mine; } }
 
+
+
         public float maxForwardSpeed = 8f;        // How fast Ellen can run.
         public float gravity = 20f;               // How fast Ellen accelerates downwards when airborne.
         public float jumpSpeed = 10f;             // How fast Ellen takes off when jumping.

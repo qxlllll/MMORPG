@@ -1,4 +1,5 @@
 ﻿using System;
+using TMPro;
 
 namespace Common
 {
@@ -9,5 +10,6 @@ namespace Common
         public string user;
         public string token;
         public string scene;
+        public bool exist_or_not;
     }
 }

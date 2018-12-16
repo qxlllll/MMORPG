@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Gamekit3D;
+using Common;
+using Gamekit3D.Network;
+using UnityEngine.SceneManagement;
+using System.Text.RegularExpressions;
+
 
 public class CartGridUI : MonoBehaviour
 {
@@ -73,10 +79,44 @@ public class CartGridUI : MonoBehaviour
 
     public void OnBuyButtonClicked()
     {
+        int sum = 0;
+        int count = 0;
+        int gold_price = 0;
+        GameObject item;
+        CBuy buy = new CBuy();
         foreach (var kv in m_items)
         {
-            // TODO ...
+            item = kv.Value;
+            CartItemUI handler = item.GetComponent<CartItemUI>();
+            count=handler.count;
+            gold_price = handler.gold_price;
+            sum += gold_price * count;
+            buy.products.Add(handler.itemName,count);
         }
+        
+        buy.sum_gold_price = sum;
+        buy.buy_by_gold = 1;
+        Client.Instance.Send(buy);
     }
+    public void OnBuyBySilverButtonClicked()
+    {
+        int sum = 0;
+        int count = 0;
+        int silver_price = 0;
+        GameObject item;
+        CBuy buy = new CBuy();
+        foreach (var kv in m_items)
+        {
+            item = kv.Value;
+            CartItemUI handler = item.GetComponent<CartItemUI>();
+            count = handler.count;
+            silver_price = handler.silver_price;
+            sum += silver_price * count;
+            buy.products.Add(handler.itemName, count);
+        }
 
+        buy.sum_silver_price = sum;
+        buy.buy_by_silver = 1;
+        Client.Instance.Send(buy);
+    }
 }

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Gamekit3D;
+using UnityEngine.UI;
+using Gamekit3D.Network;
+using Common;
 
 public class RoleUI : MonoBehaviour
 {
@@ -30,6 +33,8 @@ public class RoleUI : MonoBehaviour
     private void OnEnable()
     {
         PlayerMyController.Instance.EnabledWindowCount++;
+        CGetInventory getInventory = new CGetInventory();
+        Client.Instance.Send(getInventory);
         if (m_controller == null || m_damageable == null)
         {
             m_controller = PlayerController.Mine;
@@ -37,6 +42,11 @@ public class RoleUI : MonoBehaviour
         }
         string hp = string.Format("{0}/{1}", m_damageable.currentHitPoints, m_damageable.maxHitPoints);
         HPValue.SetText(hp, true);
+        InteligenceValue.SetText(Attribute.InteligenceValue, true);
+        SpeedValue.SetText(Attribute.SpeedValue, true);
+        LevelValue.SetText(Attribute.LevelValue, true);
+        AttackValue.SetText(Attribute.AttackValue, true);
+        DefenseValue.SetText(Attribute.DefenseValue, true);
     }
 
     private void OnDisable()

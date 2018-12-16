@@ -53,12 +53,12 @@ namespace Gamekit3D.Network
             }
             if (gameScene)
             {
-                if (connected)
-                {
-                    // for debug only ...
-                    CLogin login = new CLogin();
-                    Send(login);
-                }
+                //if (connected)
+                //{
+                //    // for debug only ...
+                //    CLogin login = new CLogin();
+                //    Send(login);
+                //}
                 SceneManager.sceneLoaded += RecvSceneLoaded;
             }
         }
