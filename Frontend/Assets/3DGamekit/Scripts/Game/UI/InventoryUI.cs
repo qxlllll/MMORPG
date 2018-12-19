@@ -22,7 +22,6 @@ public class InventoryUI : MonoBehaviour
     {
         CApply apply = new CApply();
         apply.to_apply = Attribute.apply;
-        Debug.Log("apply.to_apply"+apply.to_apply);
         Client.Instance.Send(apply);
     }
     public void OnRefreshClicked()
@@ -44,7 +43,8 @@ public class InventoryUI : MonoBehaviour
         //OnRefresh();
         foreach (var kv in Inventory.player_Inventory)
         {
-            
+
+
             // TODO ... specify icon by item types
             int i = 0;
             int num = kv.Value;

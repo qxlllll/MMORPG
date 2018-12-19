@@ -16,12 +16,25 @@ namespace Backend.Game
         public string LevelValue;
         public string AttackValue;
         public string DefenseValue;
-        public Int16 gold_coins;
+        public int gold_coins;
+        public int silver_coins;
+
+        public string speed_item="";
+        public string attack_item = "";
+        public string defense_item = "";
+        public string inteligence_item = "";
+
         public Dictionary<String, String> all_item_type = new Dictionary<string, string>();
-        public Dictionary<String, Int16> all_item_value = new Dictionary<string, Int16>();
-        public Dictionary<String, Int16> all_gold_price = new Dictionary<string, Int16>();
-        public Dictionary<String, Int16> all_silver_price = new Dictionary<string, Int16>();
-        public Dictionary<String, Int16> Inventory = new Dictionary<string, Int16>();
+        public Dictionary<String, int> all_item_value = new Dictionary<string, int>();
+        public Dictionary<String, int> all_gold_price = new Dictionary<string, int>();
+        public Dictionary<String, int> all_silver_price = new Dictionary<string, int>();
+        public Dictionary<String, String> all_item_durable = new Dictionary<string, String>();
+        public Dictionary<String, int> Inventory = new Dictionary<string, int>();
+
+        public Dictionary<String, String> world_market_item_name = new Dictionary<string, String>();
+        public Dictionary<String, String> world_market_item_seller = new Dictionary<string, String>();
+        public Dictionary<String, int> world_market_item_price = new Dictionary<string, int>();
+
         private Weapon m_weapon;
 
         public Weapon Weapon { get { return m_weapon; } }

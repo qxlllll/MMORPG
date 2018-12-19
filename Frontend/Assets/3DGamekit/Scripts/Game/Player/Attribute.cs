@@ -13,7 +13,13 @@ namespace Gamekit3D
         public static string LevelValue;
         public static string AttackValue;
         public static string DefenseValue;
-        public static Int16 gold_coins;
+        public static int gold_coins;
+        public static int silver_coins;
         public static string apply;
+
+        public static string speed_item="";
+        public static string attack_item="";
+        public static string defense_item="";
+        public static string inteligence_item="";
     }
 }

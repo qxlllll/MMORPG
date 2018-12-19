@@ -28,7 +28,7 @@ namespace Backend.Network
             var conn = new NpgsqlConnection(connString);
             conn.Open();
             Console.WriteLine("Connected PostgreSQL");
-            var cmd = new NpgsqlCommand(string.Format("SELECT password,Inteligence,Speed,Level,Attack,Defense,gold_coins FROM users WHERE name = '{0}'", request.user), conn);
+            var cmd = new NpgsqlCommand(string.Format("SELECT password,Inteligence,Speed,Level,Attack,Defense,gold_coins,silver_coins,defense_item,attack_item,speed_item,inteligence_item FROM users WHERE name = '{0}'", request.user), conn);
             var reader=cmd.ExecuteReader();
             int count = 0;
             string password = "";
@@ -56,6 +56,21 @@ namespace Backend.Network
                 Console.WriteLine(reader.GetInt16(6));
                 player.gold_coins = reader.GetInt16(6);
 
+                Console.WriteLine(reader.GetInt16(7));
+                player.silver_coins = reader.GetInt16(7);
+
+                Console.WriteLine(reader.GetString(8));
+                player.defense_item = reader.GetString(8);
+
+                Console.WriteLine(reader.GetString(9));
+                player.attack_item = reader.GetString(9);
+
+                Console.WriteLine(reader.GetString(10));
+                player.speed_item = reader.GetString(10);
+
+                Console.WriteLine(reader.GetString(11));
+                player.inteligence_item = reader.GetString(11);
+
             }
             Console.WriteLine(count);
             if (count!=0)
@@ -64,7 +79,7 @@ namespace Backend.Network
                 if (password.Equals(request.password))
                 {
                     Console.WriteLine("Comparing yes");
-                    ClientTipInfo(channel, "enter successfully");
+                    ClientTipInfo(channel, "Entering");
                     response.exist_or_not = true;
                     channel.Send(response);
                 }

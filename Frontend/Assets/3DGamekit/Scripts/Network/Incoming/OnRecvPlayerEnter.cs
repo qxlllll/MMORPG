@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using System;
+using UnityEngine.UI;
 
 namespace Gamekit3D.Network
 {
@@ -25,7 +26,7 @@ namespace Gamekit3D.Network
             {
                 startup.PlayerEnter(msg.scene);
             }
-           
+            
 
         }
     }

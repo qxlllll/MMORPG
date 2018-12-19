@@ -12,6 +12,7 @@ namespace Common
         S_PLAYER_ENTER,
         S_PLAYER_ATTRIBUTE,
         S_MARKET_ATTRIBUTE,
+        S_WORLD_MARKET_ATTRIBUTE,
         S_GET_INVENTORY,
         S_ITEM_SPAWN,
         S_SPAWN,

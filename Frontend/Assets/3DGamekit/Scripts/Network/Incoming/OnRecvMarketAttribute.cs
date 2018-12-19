@@ -17,11 +17,7 @@ namespace Gamekit3D.Network
             FMarket.all_item_value = msg.all_item_value;
             FMarket.all_gold_price = msg.all_gold_price;
             FMarket.all_silver_price = msg.all_silver_price;
-            Debug.Log("OnRecvMarketAttribute");
-
-
-
-
+            FMarket.all_item_durable = msg.all_item_durable;
 
         }
     }

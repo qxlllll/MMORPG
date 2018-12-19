@@ -13,6 +13,12 @@ namespace Common
         public string LevelValue;
         public string AttackValue;
         public string DefenseValue;
-        public Int16 gold_coins;
+        public int gold_coins;
+        public int silver_coins;
+
+        public string speed_item;
+        public string attack_item;
+        public string defense_item;
+        public string inteligence_item;
     }
 }

@@ -178,6 +178,7 @@
     <Compile Include="Assets\3DGamekit\Scripts\Common\BEMessage\SSpriteDie.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Common\BEMessage\SSpriteMove.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Common\BEMessage\STipInfo.cs" />
+    <Compile Include="Assets\3DGamekit\Scripts\Common\BEMessage\SWorldMarketAttribute.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Common\Command.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Common\Delegate.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Common\FEMessage\CApply.cs" />
@@ -293,6 +294,7 @@
     <Compile Include="Assets\3DGamekit\Scripts\Game\Player\StateMachineBehaviour\EllenRespawnEffect.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\Player\StateMachineBehaviour\EllenSetTargetableSMB.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\Player\StateMachineBehaviour\EllenStaffEffect.cs" />
+    <Compile Include="Assets\3DGamekit\Scripts\Game\Player\WorldMarket.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\Timeline\AudioSnapshot\AudioSnapshotBehaviour.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\Timeline\AudioSnapshot\AudioSnapshotClip.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\Timeline\AudioSnapshot\AudioSnapshotMixerBehaviour.cs" />
@@ -322,6 +324,7 @@
     <Compile Include="Assets\3DGamekit\Scripts\Game\UI\CartGridUI.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\UI\CartItemUI.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\UI\ChatUI.cs" />
+    <Compile Include="Assets\3DGamekit\Scripts\Game\UI\CoinsUI.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\UI\DialogueCanvasController.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\UI\FriendUI.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\UI\GameStart.cs" />
@@ -336,6 +339,11 @@
     <Compile Include="Assets\3DGamekit\Scripts\Game\UI\ShelfItemUI.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\UI\ShelfViewUI.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\UI\StartUI.cs" />
+    <Compile Include="Assets\3DGamekit\Scripts\Game\UI\WorldMarketCartGridUI.cs" />
+    <Compile Include="Assets\3DGamekit\Scripts\Game\UI\WorldMarketCartItemUI.cs" />
+    <Compile Include="Assets\3DGamekit\Scripts\Game\UI\WorldMarketGetAllIcons.cs" />
+    <Compile Include="Assets\3DGamekit\Scripts\Game\UI\WorldMarketShelfGridUI.cs" />
+    <Compile Include="Assets\3DGamekit\Scripts\Game\UI\WorldMarketShelfItemUI.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\UI\ZOrderTopWhenEnable.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\Utility\DebugUtility.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\Utility\MonoSingleton.cs" />
@@ -375,6 +383,7 @@
     <Compile Include="Assets\3DGamekit\Scripts\Network\Incoming\OnRecvSpriteMove.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Network\Incoming\OnRecvTakeItem.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Network\Incoming\OnRecvTipInfo.cs" />
+    <Compile Include="Assets\3DGamekit\Scripts\Network\Incoming\OnRecvWorldMarketAttribute.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Network\IPlayerBehavior.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Network\ISpriteBehavior.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Network\MyNetwork.cs" />

@@ -12,7 +12,7 @@ public class ShelfItemUI : MonoBehaviour
     public Button button;
     public Text textName;
     public Text textCost;
-    public short gold_price;
+    public int gold_price;
     CartGridUI handler;
 
     private void Awake()
@@ -49,7 +49,7 @@ public class ShelfItemUI : MonoBehaviour
         button.image.sprite = sprite;
         textName.text = name;
         Debug.Log(name);
-        foreach (KeyValuePair<string, short> kvp in FMarket.all_gold_price)
+        foreach (KeyValuePair<string, int> kvp in FMarket.all_gold_price)
         {
             if (kvp.Key.Equals(name))
             {

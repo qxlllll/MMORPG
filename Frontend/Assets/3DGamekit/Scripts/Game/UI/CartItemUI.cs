@@ -13,8 +13,8 @@ public class CartItemUI : MonoBehaviour
     public InputField inputCount;
     public int count = 0;
     public string itemName;
-    public short gold_price;
-    public short silver_price;
+    public int gold_price;
+    public int silver_price;
     void Awake()
     {
     }
@@ -40,14 +40,14 @@ public class CartItemUI : MonoBehaviour
         count++;
         button.image.sprite = sprite;
         inputCount.text = System.Convert.ToString(count);
-        foreach (KeyValuePair<string, short> kvp in FMarket.all_gold_price)
+        foreach (KeyValuePair<string, int> kvp in FMarket.all_gold_price)
         {
             if (kvp.Key.Equals(name))
             {
                 gold_price = kvp.Value;
             }
         }
-        foreach (KeyValuePair<string, short> kvp in FMarket.all_silver_price)
+        foreach (KeyValuePair<string, int> kvp in FMarket.all_silver_price)
         {
             if (kvp.Key.Equals(name))
             {

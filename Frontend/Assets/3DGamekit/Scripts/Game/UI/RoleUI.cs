@@ -47,6 +47,15 @@ public class RoleUI : MonoBehaviour
         LevelValue.SetText(Attribute.LevelValue, true);
         AttackValue.SetText(Attribute.AttackValue, true);
         DefenseValue.SetText(Attribute.DefenseValue, true);
+        Sprite defense_icon = GetAllIcons.icons[Attribute.defense_item];
+        GameObject.Find("DefenseImage").GetComponent<Image>().sprite = defense_icon;
+        Sprite attack_icon = GetAllIcons.icons[Attribute.attack_item];
+        GameObject.Find("AttackImage").GetComponent<Image>().sprite = attack_icon;
+        Sprite in_icon = GetAllIcons.icons[Attribute.inteligence_item];
+        GameObject.Find("InteligenceImage").GetComponent<Image>().sprite = in_icon;
+        Sprite speed_icon = GetAllIcons.icons[Attribute.speed_item];
+        GameObject.Find("SpeedImage").GetComponent<Image>().sprite = speed_icon;
+
     }
 
     private void OnDisable()

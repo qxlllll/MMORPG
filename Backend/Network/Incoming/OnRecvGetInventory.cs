@@ -22,17 +22,19 @@ namespace Backend.Network
             Console.WriteLine("Select finished");
             var reader = cmd.ExecuteReader();
             String item_name;
+            player.Inventory.Clear();
             while (reader.Read())
             {
 
                 item_name = Convert.ToString(reader["item_name"]); // 获得指定字段的值
+
                 //market.item.item_type  = Convert.ToString(reader["item_type"]);
                 player.Inventory.Add(item_name, Convert.ToInt16(reader["item_num"]));
 
             }
             reader.Close();
 
-            foreach (KeyValuePair<string, Int16> kvp in player.Inventory)
+            foreach (KeyValuePair<string, int> kvp in player.Inventory)
             {
                 Console.Write("{0},{1}  ", kvp.Key, kvp.Value);
             }

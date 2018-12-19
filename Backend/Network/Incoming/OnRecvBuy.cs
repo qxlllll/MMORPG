@@ -12,6 +12,7 @@ namespace Backend.Network
         {
             CBuy request = message as CBuy;
             Player player = (Player)channel.GetContent();
+            SPlayerAttribute response = new SPlayerAttribute();
 
             Console.WriteLine("Buying");
             Console.WriteLine(request.sum_gold_price);
@@ -47,6 +48,7 @@ namespace Backend.Network
                 reader2.Read();
                 Console.WriteLine("write coins finished");
                 ClientTipInfo(channel, string.Format("Bought successfully,your remainning gold_coin is {0}", remain_gold_coins));
+                player.gold_coins = remain_gold_coins;
                 reader2.Close();
             }else if(request.buy_by_silver==1)
             {
@@ -58,6 +60,7 @@ namespace Backend.Network
                 reader2.Read();
                 Console.WriteLine("write coins finished");
                 ClientTipInfo(channel, string.Format("Bought successfully,your remainning silver_coin is {0}", remain_silver_coins));
+                player.silver_coins = remain_silver_coins;
                 reader2.Close();
             }
             
@@ -109,7 +112,15 @@ namespace Backend.Network
                 
             }
             Console.WriteLine("write products finished");
-            
+            response.InteligenceValue = player.InteligenceValue;
+            response.SpeedValue = player.SpeedValue;
+            response.LevelValue = player.LevelValue;
+            response.AttackValue = player.AttackValue;
+            response.DefenseValue = player.DefenseValue;
+            response.gold_coins = player.gold_coins;
+            response.silver_coins = player.silver_coins;
+            channel.Send(response);
+
         }
     }
 }

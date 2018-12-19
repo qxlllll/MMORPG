@@ -7,22 +7,24 @@ using Common;
 using Gamekit3D.Network;
 using UnityEngine.SceneManagement;
 using System.Text.RegularExpressions;
-
+using TMPro;
 
 public class CartGridUI : MonoBehaviour
 {
     public GameObject CartItem;
 
     private Dictionary<string, GameObject> m_items = new Dictionary<string, GameObject>();
-
+    public TextMeshProUGUI GValue;
+    public TextMeshProUGUI SValue;
     private void Awake()
     {
         CartItem.SetActive(false);
+
     }
     // Use this for initialization
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -33,6 +35,8 @@ public class CartGridUI : MonoBehaviour
 
     public void AddToCart(string name)
     {
+        //GValue.SetText("555", true);
+        //SValue.SetText("1000", true);
         Sprite sprite;
         GameObject item;
         if (!GetAllIcons.icons.TryGetValue(name, out sprite))

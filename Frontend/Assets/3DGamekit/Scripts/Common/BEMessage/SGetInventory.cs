@@ -9,6 +9,6 @@ namespace Common
     {
         public SGetInventory() : base(Command.S_GET_INVENTORY) { }
 
-        public Dictionary<String, Int16> player_Inventory;
+        public Dictionary<String, int> player_Inventory;
     }
 }
