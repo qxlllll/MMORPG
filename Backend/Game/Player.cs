@@ -29,7 +29,9 @@ namespace Backend.Game
         public Dictionary<String, int> all_gold_price = new Dictionary<string, int>();
         public Dictionary<String, int> all_silver_price = new Dictionary<string, int>();
         public Dictionary<String, String> all_item_durable = new Dictionary<string, String>();
+
         public Dictionary<String, int> Inventory = new Dictionary<string, int>();
+        public Dictionary<String, String> selling_Inventory = new Dictionary<string, string>();
 
         public Dictionary<String, String> world_market_item_name = new Dictionary<string, String>();
         public Dictionary<String, String> world_market_item_seller = new Dictionary<string, String>();

@@ -48,9 +48,18 @@ namespace Backend.Network
                 Console.WriteLine("add seller money finished");
 
                 sqlstring = string.Format("INSERT INTO users_items VALUES ('{0}','{1}',1);", item_name, player.user);
-                int sValue = 0;
-                Console.WriteLine(player.Inventory.TryGetValue(item_name, out sValue));
-                if (player.Inventory.TryGetValue(item_name, out sValue))
+
+                int count = -1;
+                var conn0 = new NpgsqlConnection(connString);
+                conn0.Open();
+                var cmd0 = new NpgsqlCommand(string.Format("SELECT COUNT(*) FROM users_items WHERE user_name='{0}' AND item_name='{1}';",player.user,item_name), conn0);
+                //Console.WriteLine(string.Format("SELECT COUNT(*) FROM users_items WHERE user_name='{0}' AND item_name='{1}';", item_name, player.user));
+                var reader0 = cmd0.ExecuteReader();
+                reader0.Read();
+                count = reader0.GetInt16(0);
+                reader0.Close();
+                Console.WriteLine(count);
+                if (count!=0)
                 {
                     Console.WriteLine("contains");
                     sqlstring = string.Format("update users_items set item_num=item_num+1 where user_name='{0}'and item_name='{1}';", player.user, item_name);
@@ -67,13 +76,11 @@ namespace Backend.Network
 
                 var conn4 = new NpgsqlConnection(connString);
                 conn4.Open();
-                Console.WriteLine("deleting "+item_id);
-                Console.WriteLine(string.Format("DELETE FROM worldmarket WHERE item_id='{0}'", item_id));
-                var cmd4 = new NpgsqlCommand(string.Format("DELETE FROM worldmarket WHERE item_id='{0}'", item_id), conn4);
+                var cmd4 = new NpgsqlCommand(string.Format("UPDATE worldmarket SET state=1 WHERE item_id='{0}'", item_id), conn4);
                 var reader4 = cmd4.ExecuteReader();
                 reader4.Read();
                 reader4.Close();
-                Console.WriteLine("delete from market finished");
+                Console.WriteLine("change market state finished");
             }
             
             

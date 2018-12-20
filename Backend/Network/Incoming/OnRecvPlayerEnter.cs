@@ -75,27 +75,63 @@ namespace Backend.Network
             channel.Send(market_response);
             
             SWorldMarketAttribute response2 = new SWorldMarketAttribute();
-            Console.WriteLine("Getting world market items");
+            //Console.WriteLine("Getting world market items");
             var conn2 = new NpgsqlConnection(connString);
             conn2.Open();
-            var cmd2 = new NpgsqlCommand("SELECT item_id,item,seller,price FROM worldmarket", conn2);
-            Console.WriteLine("sql finished");
+            var cmd2 = new NpgsqlCommand("SELECT item_id,item,seller,price,state FROM worldmarket", conn2);
+            //Console.WriteLine("sql finished");
             var reader2 = cmd2.ExecuteReader();
             String world_market_item_id;
-
+            player.world_market_item_name.Clear();
+            player.world_market_item_price.Clear();
+            player.world_market_item_seller.Clear();
             while (reader2.Read())
             {
-                world_market_item_id = Convert.ToString(reader2["item_id"]); 
-                player.world_market_item_name.Add(world_market_item_id, Convert.ToString(reader2["item"]));
-                player.world_market_item_seller.Add(world_market_item_id, Convert.ToString(reader2["seller"]));
-                player.world_market_item_price.Add(world_market_item_id, Convert.ToInt16(reader2["price"]));
-                
+                if (Convert.ToInt16(reader2["state"])==0)
+                {
+                    world_market_item_id = Convert.ToString(reader2["item_id"]);
+                    //Console.WriteLine(reader2["item_id"]);
+                    player.world_market_item_name.Add(world_market_item_id, Convert.ToString(reader2["item"]));
+                    //Console.WriteLine(reader2["item"]);
+                    player.world_market_item_seller.Add(world_market_item_id, Convert.ToString(reader2["seller"]));
+                    //Console.WriteLine(reader2["seller"]);
+                    player.world_market_item_price.Add(world_market_item_id, Convert.ToInt16(reader2["price"]));
+                    //Console.WriteLine(reader2["price"]);
+                }
             }
             reader2.Close();
             response2.world_market_item_name = player.world_market_item_name;
             response2.world_market_item_seller = player.world_market_item_seller;
             response2.world_market_item_price = player.world_market_item_price;
             channel.Send(response2);
+
+
+            SGetSellingInventory response3 = new SGetSellingInventory();
+
+            Console.WriteLine("Getting Init Selling Inventory");
+            var connString3 = "Host=localhost;Port=5432;Username=postgres;Password=123456;Database=postgres";
+            var conn3 = new NpgsqlConnection(connString3);
+            conn3.Open();
+            var cmd3 = new NpgsqlCommand(string.Format("SELECT item_id,item FROM worldmarket WHERE seller = '{0}' and state=0;", player.user), conn3);
+            Console.WriteLine("Select selling items finished");
+            var reader3 = cmd3.ExecuteReader();
+            string item_name3="";
+            string item_id="";
+            while (reader3.Read())
+            {
+                item_id = Convert.ToString(reader3["item_id"]);
+                item_name3 = Convert.ToString(reader3["item"]); // 获得指定字段的值
+                player.selling_Inventory.Add(item_id, item_name3);
+
+            }
+            reader3.Close();
+
+            /*foreach (KeyValuePair<string, string> kvp in player.selling_Inventory)
+            {
+                Console.WriteLine(kvp.Key + " "+kvp.Value);
+            }*/
+            response3.player_selling_Inventory = player.selling_Inventory;
+            channel.Send(response3);
 
         }
     }

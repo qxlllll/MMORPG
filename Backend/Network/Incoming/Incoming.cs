@@ -20,6 +20,8 @@ namespace Backend.Network
             register.Register(Command.C_APPLY, OnRecvApply);
             register.Register(Command.C_UNAPPLY, OnRecvUnapply);
             register.Register(Command.C_SELL, OnRecvSell);
+            register.Register(Command.C_RETRIEVE, OnRecvRetrieve);
+            register.Register(Command.C_GET_SELLING_INVENTORY, OnRecvGetSellingInventory);
             register.Register(Command.C_GET_INVENTORY, OnRecvGetInventory);
             register.Register(Command.C_GET_WORLD_MARKET, OnRecvGetWorldMarket);
             register.Register(Command.C_WORLD_MARKET_BUY, OnRecvWorldMarketBuy);

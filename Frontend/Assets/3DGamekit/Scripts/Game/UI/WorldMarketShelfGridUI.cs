@@ -87,5 +87,7 @@ public class WorldMarketShelfGridUI : MonoBehaviour
             }
         }
         WorldMarketShelfItem.SetActive(false);
+        //GameObject.FindObjectOfType<CoinsUI>().GValue.SetText(Convert.ToString(Gamekit3D.Attribute.gold_coins), true);
+        //GameObject.FindObjectOfType<CoinsUI>().SValue.SetText(Convert.ToString(Gamekit3D.Attribute.silver_coins), true);
     }
 }

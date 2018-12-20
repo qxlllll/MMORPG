@@ -33,11 +33,11 @@ namespace Backend.Network
 
             }
             reader.Close();
-
+            /*
             foreach (KeyValuePair<string, int> kvp in player.Inventory)
             {
-                Console.Write("{0},{1}  ", kvp.Key, kvp.Value);
-            }
+                Console.Write("{0},{1}", kvp.Key, kvp.Value);
+            }*/
             response.player_Inventory = player.Inventory;
             channel.Send(response);
         }

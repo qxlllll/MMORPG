@@ -48,6 +48,7 @@ public class InventoryUI : MonoBehaviour
         Client.Instance.Send(getInventory);
         OnDisable();
         OnEnable();
+        GameObject.FindObjectOfType<SellingInventoryUI>().OnRefreshClicked();
     }
     private void OnEnable()
     {

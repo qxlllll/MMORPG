@@ -34,6 +34,8 @@ namespace Gamekit3D.Network
             //Debug.Log(Attribute.defense_item);
             Attribute.attack_item = msg.attack_item;
 
+            GameObject.FindObjectOfType<CoinsUI>().GValue.SetText(Convert.ToString(Gamekit3D.Attribute.gold_coins), true);
+            GameObject.FindObjectOfType<CoinsUI>().SValue.SetText(Convert.ToString(Gamekit3D.Attribute.silver_coins), true);
             Sprite defense_icon = GetAllIcons.icons[Attribute.defense_item];
             GameObject.Find("DefenseImage").GetComponent<Image>().sprite = defense_icon;            
             Sprite attack_icon = GetAllIcons.icons[Attribute.attack_item];

@@ -17,7 +17,7 @@ namespace Backend.Network
             Console.WriteLine("Getting world market items");
             var conn = new NpgsqlConnection(connString);
             conn.Open();
-            var cmd = new NpgsqlCommand("SELECT item_id,item,seller,price FROM worldmarket", conn);
+            var cmd = new NpgsqlCommand("SELECT item_id,item,seller,price,state FROM worldmarket", conn);
             Console.WriteLine("sql finished");
             var reader = cmd.ExecuteReader();
             String world_market_item_id;
@@ -26,14 +26,18 @@ namespace Backend.Network
             player.world_market_item_seller.Clear();
             while (reader.Read())
             {
-                world_market_item_id = Convert.ToString(reader["item_id"]);
-                Console.WriteLine(reader["item_id"]);
-                player.world_market_item_name.Add(world_market_item_id, Convert.ToString(reader["item"]));
-                Console.WriteLine(reader["item"]);
-                player.world_market_item_seller.Add(world_market_item_id, Convert.ToString(reader["seller"]));
-                Console.WriteLine(reader["seller"]);
-                player.world_market_item_price.Add(world_market_item_id, Convert.ToInt16(reader["price"]));
-                Console.WriteLine(reader["price"]);
+                if (Convert.ToInt16(reader["state"])==0)
+                {
+                    world_market_item_id = Convert.ToString(reader["item_id"]);
+                    //Console.WriteLine(reader["item_id"]);
+                    player.world_market_item_name.Add(world_market_item_id, Convert.ToString(reader["item"]));
+                    //Console.WriteLine(reader["item"]);
+                    player.world_market_item_seller.Add(world_market_item_id, Convert.ToString(reader["seller"]));
+                    //Console.WriteLine(reader["seller"]);
+                    player.world_market_item_price.Add(world_market_item_id, Convert.ToInt16(reader["price"]));
+                    //Console.WriteLine(reader["price"]);
+                }
+
 
             }
             reader.Close();

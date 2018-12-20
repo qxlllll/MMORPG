@@ -133,7 +133,7 @@ SubShader {
 		Bind "TexCoord", texcoord0
 	}
 	Pass {
-		SetTexture [_MainTex] {
+		ure [_MainTex] {
 			constantColor [_Color] combine constant * primary, constant * texture
 		}
 	}

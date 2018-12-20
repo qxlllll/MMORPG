@@ -27,26 +27,26 @@ namespace Backend.Network
             var connString = "Host=localhost;Port=5432;Username=postgres;Password=123456;Database=postgres";
             var sqlstring = "";
             var item_id = "";
+
             var sqlstring2 = "";
-            sqlstring2 = string.Format("SELECT item_id FROM worldmarket WHERE seller='{0}'", player.user);
+            sqlstring2 = string.Format("SELECT COUNT(*) FROM worldmarket WHERE seller='{0}'", player.user);
             var conn2 = new NpgsqlConnection(connString);
             conn2.Open();
             var cmd2 = new NpgsqlCommand(sqlstring2, conn2);
             var reader2 = cmd2.ExecuteReader();
-            int count = 0;
-            var sqlstring3 = "";
-            while(reader2.Read())
-            {
-                count++;
-            }
+            reader2.Read();
+            int count = reader2.GetInt16(0);
             reader2.Close();
+
+
+            var sqlstring3 = "";
             int user_selling_items = count+1;
             Console.WriteLine(user_selling_items);
             if (flag == 1)
             {
                 item_id = string.Format("{0}_{1}",player.user, user_selling_items);
                 Console.WriteLine(item_id);
-                sqlstring = string.Format("INSERT INTO worldmarket VALUES ('{0}','{1}','{2}',{3});", item_id,request.to_sell, player.user,request.to_sell_price);
+                sqlstring = string.Format("INSERT INTO worldmarket VALUES ('{0}','{1}','{2}',{3},0);", item_id,request.to_sell, player.user,request.to_sell_price);
                 var conn = new NpgsqlConnection(connString);
                 conn.Open();
                 var cmd = new NpgsqlCommand(sqlstring, conn);

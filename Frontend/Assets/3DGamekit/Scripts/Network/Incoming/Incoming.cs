@@ -24,6 +24,7 @@ namespace Gamekit3D.Network
             register.Register(Command.S_WORLD_MARKET_ATTRIBUTE, OnRecvWorldMarketAttribute);
             register.Register(Command.S_PLAYER_ATTRIBUTE, OnRecvPlayerAttribute);
             register.Register(Command.S_GET_INVENTORY, OnRecvInventory);
+            register.Register(Command.S_GET_SELLING_INVENTORY, OnRecvSellingInventory);
             register.Register(Command.S_SPAWN, OnRecvSpawn);
             register.Register(Command.S_ATTACK, OnRecvAttack);
             register.Register(Command.S_JUMP, OnRecvJump);

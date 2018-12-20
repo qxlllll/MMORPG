@@ -16,6 +16,7 @@ namespace Gamekit3D
         public static int gold_coins;
         public static int silver_coins;
         public static string apply;
+        public static string retrieve;
 
         public static string speed_item="0";
         public static string attack_item="0";
