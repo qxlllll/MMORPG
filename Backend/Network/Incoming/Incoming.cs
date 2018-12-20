@@ -18,7 +18,11 @@ namespace Backend.Network
             register.Register(Command.C_PLAYER_ENTER, OnRecvPlayerEnter);
             register.Register(Command.C_BUY, OnRecvBuy);
             register.Register(Command.C_APPLY, OnRecvApply);
+            register.Register(Command.C_UNAPPLY, OnRecvUnapply);
+            register.Register(Command.C_SELL, OnRecvSell);
             register.Register(Command.C_GET_INVENTORY, OnRecvGetInventory);
+            register.Register(Command.C_GET_WORLD_MARKET, OnRecvGetWorldMarket);
+            register.Register(Command.C_WORLD_MARKET_BUY, OnRecvWorldMarketBuy);
             register.Register(Command.C_PLAYER_MOVE, OnRecvPlayerMove);
             register.Register(Command.C_PLAYER_JUMP, OnRecvPlayerJump);
             register.Register(Command.C_PLAYER_ATTACK, OnRecvPlayerAttack);

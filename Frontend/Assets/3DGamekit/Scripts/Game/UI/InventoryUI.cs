@@ -24,6 +24,19 @@ public class InventoryUI : MonoBehaviour
         apply.to_apply = Attribute.apply;
         Client.Instance.Send(apply);
     }
+    public void OnUnapplyClicked()
+    {
+        CUnapply unapply = new CUnapply();
+        unapply.to_unapply = Attribute.apply;
+        Client.Instance.Send(unapply);
+    }
+    public void OnSellClicked()
+    {
+        CSell sell = new CSell();
+        sell.to_sell = Attribute.apply;
+        sell.to_sell_price = FMarket.all_silver_price[sell.to_sell] / 2;
+        Client.Instance.Send(sell);
+    }
     public void OnRefreshClicked()
     {
         GameObject.FindObjectOfType<RoleUI>().InteligenceValue.SetText(Attribute.InteligenceValue, true);
@@ -31,6 +44,8 @@ public class InventoryUI : MonoBehaviour
         GameObject.FindObjectOfType<RoleUI>().LevelValue.SetText(Attribute.LevelValue, true);
         GameObject.FindObjectOfType<RoleUI>().AttackValue.SetText(Attribute.AttackValue, true);
         GameObject.FindObjectOfType<RoleUI>().DefenseValue.SetText(Attribute.DefenseValue, true);
+        CGetInventory getInventory = new CGetInventory();
+        Client.Instance.Send(getInventory);
         OnDisable();
         OnEnable();
     }

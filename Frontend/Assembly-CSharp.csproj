@@ -187,6 +187,7 @@
     <Compile Include="Assets\3DGamekit\Scripts\Common\FEMessage\CEnemyClosing.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Common\FEMessage\CFindPath.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Common\FEMessage\CGetInventory.cs" />
+    <Compile Include="Assets\3DGamekit\Scripts\Common\FEMessage\CGetWorldMarket.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Common\FEMessage\CLogin.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Common\FEMessage\CPlayerAttack.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Common\FEMessage\CPlayerEnter.cs" />
@@ -195,6 +196,9 @@
     <Compile Include="Assets\3DGamekit\Scripts\Common\FEMessage\CPlayerTake.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Common\FEMessage\CPositionRevisecs.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Common\FEMessage\CRegister.cs" />
+    <Compile Include="Assets\3DGamekit\Scripts\Common\FEMessage\CSell.cs" />
+    <Compile Include="Assets\3DGamekit\Scripts\Common\FEMessage\CUnapply.cs" />
+    <Compile Include="Assets\3DGamekit\Scripts\Common\FEMessage\CWorldMarketBuy.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Common\IChannel.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Common\IRegister.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Common\Message.cs" />
@@ -344,6 +348,7 @@
     <Compile Include="Assets\3DGamekit\Scripts\Game\UI\WorldMarketGetAllIcons.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\UI\WorldMarketShelfGridUI.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\UI\WorldMarketShelfItemUI.cs" />
+    <Compile Include="Assets\3DGamekit\Scripts\Game\UI\WorldMarketShelfViewUI.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\UI\ZOrderTopWhenEnable.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\Utility\DebugUtility.cs" />
     <Compile Include="Assets\3DGamekit\Scripts\Game\Utility\MonoSingleton.cs" />

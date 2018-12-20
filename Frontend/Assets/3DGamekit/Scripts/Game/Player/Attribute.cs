@@ -17,9 +17,9 @@ namespace Gamekit3D
         public static int silver_coins;
         public static string apply;
 
-        public static string speed_item="";
-        public static string attack_item="";
-        public static string defense_item="";
-        public static string inteligence_item="";
+        public static string speed_item="0";
+        public static string attack_item="0";
+        public static string defense_item="0";
+        public static string inteligence_item="0";
     }
 }

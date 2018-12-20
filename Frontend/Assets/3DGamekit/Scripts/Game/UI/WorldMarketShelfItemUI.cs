@@ -13,13 +13,16 @@ public class WorldMarketShelfItemUI : MonoBehaviour
     public Text textName;
     public Text textCost;
     public int price;
-    CartGridUI handler;
+    public string seller;
+    public string this_item_id;
+    WorldMarketCartGridUI handler;
+    
 
     private void Awake()
     {
         if (cartContent != null)
         {
-            handler = cartContent.GetComponent<CartGridUI>();
+            handler = cartContent.GetComponent<WorldMarketCartGridUI>();
         }
     }
     // Use this for initialization
@@ -36,34 +39,27 @@ public class WorldMarketShelfItemUI : MonoBehaviour
 
     public void Init(string name)
     {
-        itemName = name;
-        Sprite sprite; 
+        this_item_id = name;
+        itemName = WorldMarket.world_market_item_name[this_item_id];
+        seller = WorldMarket.world_market_item_seller[this_item_id];
+        price = WorldMarket.world_market_item_price[this_item_id];
+        Sprite sprite;
         if (button == null || textName == null || textCost == null)
         {
             return;
         }
-        if (!GetAllIcons.icons.TryGetValue(name, out sprite))
+        if (!GetAllIcons.icons.TryGetValue(itemName, out sprite))
         {
             return;
         }
         button.image.sprite = sprite;
-        textName.text = name;
-        Debug.Log(name);
-        foreach (KeyValuePair<string, int> kvp in WorldMarket.world_market_item_price)
-        {
-            if (kvp.Key.Equals(name))
-            {
-                price = kvp.Value;
-                Debug.Log(kvp.Value);
-            }
-        }
-        textCost.text = "$" + Convert.ToString(price);
-        //textCost.text = "4";
+        textName.text = itemName;
+        textCost.text = Convert.ToString(seller);
     }
 
     public void AddToCart()
     {
         if (handler != null)
-            handler.AddToCart(itemName);
+            handler.AddToCart(this_item_id);
     }
 }

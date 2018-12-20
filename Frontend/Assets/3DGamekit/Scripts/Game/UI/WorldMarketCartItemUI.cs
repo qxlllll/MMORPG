@@ -13,6 +13,7 @@ public class WorldMarketCartItemUI : MonoBehaviour
     public InputField inputCount;
     public int count = 0;
     public string itemName;
+    public string this_item_id;
     public int price;
     void Awake()
     {
@@ -27,32 +28,36 @@ public class WorldMarketCartItemUI : MonoBehaviour
     public void Init(string name)
     {
         Sprite sprite;
+        this_item_id = name;
+        itemName = WorldMarket.world_market_item_name[this_item_id];
         if (button == null || textCost == null || textCost == null)
         {
             return;
         }
-        if (!GetAllIcons.icons.TryGetValue(name, out sprite))
+        if (!GetAllIcons.icons.TryGetValue(itemName, out sprite))
         {
             return;
         }
-        itemName = name;
+        
         count++;
         button.image.sprite = sprite;
         inputCount.text = System.Convert.ToString(count);
-        foreach (KeyValuePair<string, int> kvp in WorldMarket.world_market_item_price)
+        string item_id = "";
+        foreach (KeyValuePair<string, string> kvp in WorldMarket.world_market_item_name)
         {
-            if (kvp.Key.Equals(name))
+            if (kvp.Value.Equals(itemName))
             {
-                price = kvp.Value;
+                item_id = kvp.Key;
             }
         }
+        price = WorldMarket.world_market_item_price[item_id];
 
         textCost.text = "$" + Convert.ToString(price);
     }
 
     public void Increase()
     {
-        count++;
+        //count++;
         inputCount.text = System.Convert.ToString(count);
         textCost.text = "$" + Convert.ToString(price);
     }
@@ -69,7 +74,8 @@ public class WorldMarketCartItemUI : MonoBehaviour
             WorldMarketCartGridUI gridHandler = transform.parent.GetComponent<WorldMarketCartGridUI>();
             if (gridHandler != null)
             {
-                gridHandler.RemoveFromCart(itemName);
+                Debug.Log("removing"+this_item_id);
+                gridHandler.RemoveFromCart(this_item_id);
             }
         }
         else

@@ -20,6 +20,7 @@ namespace Backend.Network
             player.Spawn();
             scene.AddEntity(player);
             Console.WriteLine("SPlayerAttribute response");
+            response.name = player.user;
             response.InteligenceValue = player.InteligenceValue;
             response.SpeedValue = player.SpeedValue;
             response.LevelValue = player.LevelValue;
@@ -72,12 +73,6 @@ namespace Backend.Network
                 Console.Write("{0},{1}  ", kvp.Key,kvp.Value);
             }*/
             channel.Send(market_response);
-
-
-
-
-
-
             
             SWorldMarketAttribute response2 = new SWorldMarketAttribute();
             Console.WriteLine("Getting world market items");

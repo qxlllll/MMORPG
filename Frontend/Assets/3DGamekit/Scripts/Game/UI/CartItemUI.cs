@@ -62,7 +62,7 @@ public class CartItemUI : MonoBehaviour
     {
         count++;
         inputCount.text = System.Convert.ToString(count);
-        textCost.text = "$" + Convert.ToString(gold_price) + "or" + Convert.ToString(silver_price);
+        textCost.text = "$" + Convert.ToString(count*gold_price) + "or" + Convert.ToString(count*silver_price);
     }
 
     public void Decrease()
@@ -83,7 +83,7 @@ public class CartItemUI : MonoBehaviour
         else
         {
             inputCount.text = System.Convert.ToString(count);
-            textCost.text = "$" + Convert.ToString(gold_price)+"or" + Convert.ToString(silver_price);
+            textCost.text = "$" + Convert.ToString(count*gold_price)+"or" + Convert.ToString(count*silver_price);
         }
     }
 
