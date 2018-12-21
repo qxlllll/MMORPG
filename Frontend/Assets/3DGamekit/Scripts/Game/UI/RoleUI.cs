@@ -29,7 +29,11 @@ public class RoleUI : MonoBehaviour
     {
 
     }
-
+    public void OnRefreshClicked()
+    {
+        OnDisable();
+        OnEnable();
+    }
     private void OnEnable()
     {
         PlayerMyController.Instance.EnabledWindowCount++;
@@ -47,25 +51,44 @@ public class RoleUI : MonoBehaviour
         LevelValue.SetText(Attribute.LevelValue, true);
         AttackValue.SetText(Attribute.AttackValue, true);
         DefenseValue.SetText(Attribute.DefenseValue, true);
-        if (Attribute.defense_item !="0")
+        if (Attribute.defense_item != "0")
         {
             Sprite defense_icon = GetAllIcons.icons[Attribute.defense_item];
             GameObject.Find("DefenseImage").GetComponent<Image>().sprite = defense_icon;
         }
-        if (Attribute.inteligence_item!="0")
+        if (Attribute.defense_item.Equals("0"))
+        {
+            GameObject.Find("DefenseImage").GetComponent<Image>().sprite = null;
+        }
+
+        if (Attribute.inteligence_item != "0")
         {
             Sprite in_icon = GetAllIcons.icons[Attribute.inteligence_item];
             GameObject.Find("InteligenceImage").GetComponent<Image>().sprite = in_icon;
         }
+        if (Attribute.inteligence_item == "0")
+        {
+            GameObject.Find("InteligenceImage").GetComponent<Image>().sprite = null;
+        }
+
         if (Attribute.attack_item != "0")
         {
             Sprite attack_icon = GetAllIcons.icons[Attribute.attack_item];
             GameObject.Find("AttackImage").GetComponent<Image>().sprite = attack_icon;
         }
+        if (Attribute.attack_item == "0")
+        {
+            GameObject.Find("AttackImage").GetComponent<Image>().sprite = null;
+        }
+
         if (Attribute.speed_item != "0")
         {
             Sprite speed_icon = GetAllIcons.icons[Attribute.speed_item];
             GameObject.Find("SpeedImage").GetComponent<Image>().sprite = speed_icon;
+        }
+        if (Attribute.speed_item == "0")
+        {
+            GameObject.Find("SpeedImage").GetComponent<Image>().sprite = null;
         }
     }
 

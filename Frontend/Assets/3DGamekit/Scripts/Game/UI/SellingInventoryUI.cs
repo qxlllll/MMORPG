@@ -22,7 +22,7 @@ public class SellingInventoryUI : MonoBehaviour
     public void OnRetrieveClicked()
     {
         CRetrieve re = new CRetrieve();
-        re.to_retrieve = Attribute.apply;
+        re.to_retrieve = Attribute.retrieve;
         Client.Instance.Send(re);
     }
     public void OnRefreshClicked()
@@ -43,7 +43,7 @@ public class SellingInventoryUI : MonoBehaviour
         {
             string item_id = kv.Key;
             string item_name = kv.Value;
-            Debug.Log(item_id + " " + item_name);
+            //Debug.Log(item_id + " " + item_name);
             GameObject cloned = GameObject.Instantiate(InventoryCell);
             Button button = cloned.GetComponent<Button>();
             Sprite icon = GetAllIcons.icons[kv.Value];

@@ -48,13 +48,13 @@ public class ShelfItemUI : MonoBehaviour
         }
         button.image.sprite = sprite;
         textName.text = name;
-        Debug.Log(name);
+        //Debug.Log(name);
         foreach (KeyValuePair<string, int> kvp in FMarket.all_gold_price)
         {
             if (kvp.Key.Equals(name))
             {
                 gold_price = kvp.Value;
-                Debug.Log(kvp.Value);
+                //Debug.Log(kvp.Value);
             }
         }
         textCost.text = "$" + Convert.ToString(gold_price);

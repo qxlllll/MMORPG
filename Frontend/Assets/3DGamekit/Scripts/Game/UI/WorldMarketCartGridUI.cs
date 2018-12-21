@@ -85,7 +85,7 @@ public class WorldMarketCartGridUI : MonoBehaviour
         itemName = WorldMarket.world_market_item_name[this_item_id];
         if (wm_items.TryGetValue(this_item_id, out item))
         {
-            Debug.Log(this_item_id);
+            //Debug.Log(this_item_id);
             wm_items.Remove(this_item_id);
             Destroy(item);
         }

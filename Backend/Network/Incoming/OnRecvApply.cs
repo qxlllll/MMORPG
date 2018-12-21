@@ -199,7 +199,7 @@ namespace Backend.Network
             reader4.Close();
             response2.player_Inventory = player.Inventory;
             channel.Send(response2);
-            ClientTipInfo(channel, "Applied successfully,refresh to see the update");
+            ClientTipInfo(channel, "Applied successfully");
 
 
         }
